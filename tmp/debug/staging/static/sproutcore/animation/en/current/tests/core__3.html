@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <title>Sproutcore Animation</title>
+  <script type="text/javascript">
+/* >>>>>>>>>> BEGIN source/core.js */
+// ==========================================================================
+// Project:   SproutCore - JavaScript Application Framework
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
+//            Portions ©2008-2009 Apple Inc. All rights reserved.
+// License:   Licened under MIT license (see license.js)
+// ==========================================================================
+
+
+/* >>>>>>>>>> BEGIN source/system/browser.js */
+// ==========================================================================
+// Project:   SproutCore - JavaScript Application Framework
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
+//            Portions ©2008-2009 Apple Inc. All rights reserved.
+// License:   Licened under MIT license (see license.js)
+// ==========================================================================
+
+var SC = SC || { BUNDLE_INFO: {}, LAZY_INSTANTIATION: {} };
+
+SC.browser = (function() {
+  var userAgent = navigator.userAgent.toLowerCase();
+  var version = (userAgent.match( /.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/ ) || [])[1] ;
+
+  var browser = {
+    version: version,
+    safari: (/webkit/).test( userAgent ) ? version : 0,
+    opera: (/opera/).test( userAgent ) ? version : 0,
+    msie: (/msie/).test( userAgent ) && !(/opera/).test( userAgent ) ? version : 0,
+    mozilla: (/mozilla/).test( userAgent ) && !(/(compatible|webkit)/).test( userAgent ) ? version : 0,
+    mobileSafari: (/apple.*mobile.*safari/).test(userAgent) ? version : 0,
+    windows: !!(/(windows)/).test(userAgent),
+    mac: !!((/(macintosh)/).test(userAgent) || (/(mac os x)/).test(userAgent)),
+    language: (navigator.language || navigator.browserLanguage).split('-', 1)[0]
+  };
+  
+    browser.current = browser.msie ? 'msie' : browser.mozilla ? 'mozilla' : browser.safari ? 'safari' : browser.opera ? 'opera' : 'unknown' ;
+  return browser ;
+})();
+
+/* >>>>>>>>>> BEGIN source/system/loader.js */
+// ==========================================================================
+// Project:   SproutCore - JavaScript Application Framework
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
+//            Portions ©2008-2009 Apple Inc. All rights reserved.
+// License:   Licened under MIT license (see license.js)
+// ==========================================================================
+
+SC.bundleDidLoad = function(bundle) {
+  var info = this.BUNDLE_INFO[bundle] ;
+  if (!info) info = this.BUNDLE_INFO[bundle] = {} ;
+  info.loaded = true ;
+};
+
+SC.bundleIsLoaded = function(bundle) {
+  var info = this.BUNDLE_INFO[bundle] ;
+  return info ? !!info.loaded : false ;
+};
+
+SC.loadBundle = function() { throw "SC.loadBundle(): SproutCore is not loaded."; };
+
+SC.setupBodyClassNames = function() {
+  var el = document.body ;
+  if (!el) return ;
+  var browser, platform, shadows, borderRad, classNames, style;
+  browser = SC.browser.current ;
+  platform = SC.browser.windows ? 'windows' : SC.browser.mac ? 'mac' : 'other-platform' ;
+  style = document.documentElement.style;
+  shadows = (style.MozBoxShadow !== undefined) || 
+                (style.webkitBoxShadow !== undefined) ||
+                (style.oBoxShadow !== undefined) ||
+                (style.boxShadow !== undefined);
+  
+  borderRad = (style.MozBorderRadius !== undefined) || 
+              (style.webkitBorderRadius !== undefined) ||
+              (style.oBorderRadius !== undefined) ||
+              (style.borderRadius !== undefined);
+  
+  classNames = el.className ? el.className.split(' ') : [] ;
+  if(shadows) classNames.push('box-shadow');
+  if(borderRad) classNames.push('border-rad');
+  classNames.push(browser) ;
+  classNames.push(platform) ;
+  if (SC.browser.msie==7) classNames.push('ie7') ;
+  if (SC.browser.mobileSafari) classNames.push('mobile-safari') ;
+  el.className = classNames.join(' ') ;
+} ;
+
+/* >>>>>>>>>> BEGIN bundle_loaded.js */
+; if ((typeof SC !== 'undefined') && SC && SC.bundleDidLoad) SC.bundleDidLoad('sproutcore/bootstrap');
+
+</script>
+
+     <link href="/static/sproutcore/testing/en/current/stylesheet.css?1266765539" rel="stylesheet" type="text/css" />
+  <link href="/static/sproutcore/foundation/en/current/stylesheet.css?1266765538" rel="stylesheet" type="text/css" />
+  <link href="/static/sproutcore/desktop/en/current/stylesheet.css?1266765538" rel="stylesheet" type="text/css" />
+   
+    
+  </head>
+    
+  <body class="sc-theme focus" style="overflow:hidden;" >  
+<script type="text/javascript">
+/* >>>>>>>>>> BEGIN source/setup_body_class_names.js */
+// ==========================================================================
+// Project:   SproutCore - JavaScript Application Framework
+// Copyright: ©2006-2009 Sprout Systems, Inc. and contributors.
+//            Portions ©2008-2009 Apple Inc. All rights reserved.
+// License:   Licened under MIT license (see license.js)
+// ==========================================================================
+
+// sc_resource('setup_body_class_names'); // publish into inline format
+
+if (SC.setupBodyClassNames) SC.setupBodyClassNames() ;
+
+
+</script>
+
+
+  <script type="text/javascript" src="/static/sproutcore/debug/en/current/javascript.js?1266765687"></script>
+  <script type="text/javascript" src="/static/sproutcore/testing/en/current/javascript.js?1266765687"></script>
+  <script type="text/javascript" src="/static/sproutcore/runtime/en/current/javascript.js?1266765687"></script>
+  <script type="text/javascript" src="/static/sproutcore/datastore/en/current/javascript.js?1266765687"></script>
+  <script type="text/javascript" src="/static/sproutcore/foundation/en/current/javascript.js?1266765687"></script>
+  <script type="text/javascript" src="/static/sproutcore/desktop/en/current/javascript.js?1266765687"></script>
+  <script type="text/javascript" src="/static/sproutcore/en/current/javascript.js?1266765687"></script>
+  <script type="text/javascript" src="/static/sproutcore/animation/en/current/javascript.js?1266765687"></script>
+<script type="text/javascript">String.preferredLanguage = "en";</script>
+<script type="text/javascript">
+if (typeof SC !== "undefined") {
+  SC.mode = "TEST_MODE";
+  SC.filename = "static/sproutcore/animation/en/current/tests/core.js"; 
+}
+(function() {
+// ==========================================================================
+// Project:   SproutCore Animation
+// ==========================================================================
+
+/*globals module test ok isObj equals expects */
+var view, base, inherited;
+module("Animatable", {
+  setup: function() {
+    view = SC.View.create(SC.Animatable, { 
+      layout: { left: 100, top: 100, height: 100, width: 100 },
+      style: { opacity: .5 },
+      transitions: {
+        left: 0.25,
+        top: { duration: 0.35 },
+        width: { duration: 0.2, timing: SC.Animatable.TRANSITION_EASE_IN_OUT },
+        style: { opacity: 1 }
+      }
+    });
+    
+    // identical to normal view above
+    base = SC.View.extend(SC.Animatable, { 
+      layout: { left: 100, top: 100, height: 100, width: 100 },
+      transitions: {
+        left: 0.25,
+        top: { duration: 0.35 },
+        width: { duration: 0.2, timing: SC.Animatable.TRANSITION_EASE_IN_OUT }
+      }
+    });
+    
+    // concatenate this
+    inherited = base.create({
+      transitions: {
+        left: 0.99
+      }
+    });
+  }
+});
+
+test("animatable should have init-ed correctly", function(){
+  var left = view.transitions["left"];
+  var top = view.transitions["top"];
+  var width = view.transitions["width"];
+  
+  equals(left["duration"], 0.25, "left duration is .25");
+  equals(top["duration"], 0.35, "top duration is .35");
+  equals(width["duration"], 0.2, "width duration is .2");
+  
+  equals(left["timing"], undefined, "No timing for left.");
+  equals(top["timing"], undefined, "No timing for top.");
+  equals(width["timing"], SC.Animatable.TRANSITION_EASE_IN_OUT, "SC.Animatable.TRANSITION_EASE_IN_OUT for width.");
+});
+
+test("animatable should handle concatenated transitions properly", function(){
+  // should be identical to view, but with one difference.
+  var left = inherited.transitions["left"];
+  var top = inherited.transitions["top"];
+  var width = inherited.transitions["width"];
+  
+  equals(left["duration"], 0.99, "left duration is .99 (the overridden value)");
+  equals(top["duration"], 0.35, "top duration is .35");
+  equals(width["duration"], 0.2, "width duration is .2");
+  
+  equals(left["timing"], undefined, "No timing for left.");
+  equals(top["timing"], undefined, "No timing for top.");
+  equals(width["timing"], SC.Animatable.TRANSITION_EASE_IN_OUT, "SC.Animatable.TRANSITION_EASE_IN_OUT for width.");
+});
+
+test("animatable handler for layer update should ensure both layout and styles are set in the 'current style'.", function() {
+  var original_transition_enabled = SC.Animatable.enableCSSTransitions;
+  SC.Animatable.enableCSSTransitions = NO;
+  
+  // check current style (should be none yet)
+  var current = view.getCurrentJavaScriptStyles();
+  equals(current, null, "There should be no current style yet.");
+  
+  // create the layer
+  view.createLayer();
+  view.updateLayer();
+  
+  // check again. Now, we should have a style
+  current = view.getCurrentJavaScriptStyles();
+  ok(!SC.none(current), "There now SHOULD be a current JS style.");
+  
+  // and now, make sure we have both style AND layout set properly.
+  equals(current["opacity"], .5, "opacity should be .5");
+  equals(current["left"], 100, "left should be 100");
+  
+  // go back to the beginning
+  SC.Animatable.enableCSSTransitions = original_transition_enabled;
+});
+})();
+</script>
+	</body>
+</html>
