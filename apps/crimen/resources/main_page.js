@@ -40,12 +40,12 @@ Crimen.mainPage = SC.Page.design({
         layout: { centerX: 0, centerY: 0, height: 24, width: 300 },
         controlSize: SC.LARGE_CONTROL_SIZE,
         fontWeight: SC.BOLD_WEIGHT,
-        value:   "_toolbarWelcomeMessage".loc()
+        value:   "_Welcome to Crimen".loc()
       }),
       
       crimenToolbarLogoutButton: SC.ButtonView.design({
       	layout: { centerY: 0, height: 24, right: 12, width: 100 },
-        title:  "_toolbarLogoutButton".loc()
+        title:  "_Logout".loc()
       })
     }),
     

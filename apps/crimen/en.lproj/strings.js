@@ -10,6 +10,6 @@
 // localized string added to this file!
 //
 SC.stringsFor('en', {
-   "_toolbarLogoutButton": "Logout",
-   "_toolbarWelcomeMessage": "Welcome to Crimen"
+   "_Logout": "Logout",
+   "_Welcome to Crimen": "Welcome to Crimen"
 }) ;
