@@ -37,15 +37,15 @@ Crimen.mainPage = SC.Page.design({
       childViews: 'crimenToolbarHeading crimenToolbarLogoutButton'.w(), //has a heading and a button
       anchorLocation: SC.ANCHOR_TOP, //sits on top
       crimenToolbarHeading: SC.LabelView.design({
-        layout: { centerX: 0, centerY: 0, height: 24, width: 200 },
+        layout: { centerX: 0, centerY: 0, height: 24, width: 300 },
         controlSize: SC.LARGE_CONTROL_SIZE,
         fontWeight: SC.BOLD_WEIGHT,
-        value:   'Welcome to Crimen'
+        value:   "_toolbarWelcomeMessage".loc()
       }),
       
       crimenToolbarLogoutButton: SC.ButtonView.design({
       	layout: { centerY: 0, height: 24, right: 12, width: 100 },
-        title:  "Logout"
+        title:  "_toolbarLogoutButton".loc()
       })
     }),
     
