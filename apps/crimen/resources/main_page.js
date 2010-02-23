@@ -60,7 +60,7 @@ Crimen.mainPage = SC.Page.design({
           crimenSidebarList: SC.ScrollView.design({
         
           hasHorizontalScroller: NO, // disable horizontal scrolling
-          backgroundColor: 'lightblue',
+          backgroundColor: '#d9dee9',
           contentView: SC.LabelView.design({
             layout: { centerX: 0, centerY: 0, width: 100, height: 18 },
             tagName: "h1",
