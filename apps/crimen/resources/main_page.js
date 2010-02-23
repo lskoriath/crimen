@@ -27,6 +27,7 @@ Crimen.mainPage = SC.Page.design({
   // load.
   
   mainPane: SC.MainPane.design({
+    classNames: "crimen",
   
   //Two childViews in the MainPane: Maincontent and Toolbar
     childViews: 'crimenMaincontent crimenToolbar'.w(),
@@ -54,6 +55,7 @@ Crimen.mainPage = SC.Page.design({
       defaultThickness: 200,
  
       topLeftView: SC.View.design({
+      
         layout: { minWidth: 100 },
         childViews: 'crimenSidebarList crimenSidebarButtons'.w(), //Has the list of entries and the buttons at the bottom
       
@@ -82,13 +84,19 @@ Crimen.mainPage = SC.Page.design({
           })
       }),
       
-      bottomRightView: SC.ScrollView.design({
-        
-        hasHorizontalScroller: NO, // disable horizontal scrolling
-        contentView: SC.LabelView.design({
-          layout: { centerX: 0, centerY: 0, width: 100, height: 18 },
-          tagName: "h1",
-          value: "rechts" //This text can't be seen, as the text color is white and the background is white, too.
+      bottomRightView: SC.View.design({
+      
+        childViews: 'crimenMaincontentWelcome'.w(), //The welcome message at start. Detail views will be generated in seperate view file
+          crimenMaincontentWelcome: SC.ScrollView.design({
+          
+          hasHorizontalScroller: NO, // disable horizontal scrolling
+            contentView: SC.LabelView.design({
+          
+            layout: { centerX: 0, centerY: 0, width: 100, height: 18 },
+            tagName: "h1",
+            classNames: "welcomemessage",
+            value: "rechts" //This text can't be seen, as the text color is white and the background is white, too.
+            })
           })
       })
       
