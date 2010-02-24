@@ -8,9 +8,7 @@ sc_require('models/atom');
 
 Crimen.Atom.FIXTURES = [
 
-  // TODO: Add your data fixtures here.
-  // All fixture records must have a unique primary key (default 'guid').  See 
-  // the example below.
+  //Some predefinied fixtures
 
    { guid: 1,
      name: "Kauslität",

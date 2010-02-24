@@ -34,11 +34,9 @@ Crimen.main = function main() {
   // create multiple pages and panes.  
   Crimen.getPath('mainPage.mainPane').append() ;
 
-  // Step 2. Set the content property on your primary controller.
-  // This will make your app come alive!
-
-  // TODO: Set the content property on your primary controller
-  // ex: Crimen.contactsController.set('content',Crimen.contacts);
+  //Invokes our controller and defines variable atoms
+  var atoms = Crimen.store.find(Crimen.Atom);
+  Crimen.atomsController.set('content', atoms);
 
 } ;
 

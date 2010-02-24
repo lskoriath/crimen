@@ -63,11 +63,14 @@ Crimen.mainPage = SC.Page.design({
         
           hasHorizontalScroller: NO, // disable horizontal scrolling
           backgroundColor: '#d9dee9',
-          contentView: SC.LabelView.design({
-            layout: { centerX: 0, centerY: 0, width: 100, height: 18 },
-            tagName: "h1",
-            value: "links" //this is jsut placeholder text. The whole view will be replaced by some sort of ListView
-            })
+          contentView: SC.ListView.design({   
+  			
+  			contentBinding: 'Crimen.atomsController.arrangedObjects', //connects to atomsController (needs to be changed to molecules)
+  			selectionBinding: 'Crimen.atomsController.selection', //selection is controlled by atomsController
+  			contentValueKey: "name",//Here, the name ist displayed
+  			
+  			rowHeight: 42
+			})
           }),
           
           crimenSidebarButtons: SC.ToolbarView.design({
@@ -79,7 +82,9 @@ Crimen.mainPage = SC.Page.design({
       	
       	    theme: 'capsule', //What an ugly button. Can anyone figure out how to make this pretty?
       	    layout: { centerX: 0, centerY: 0, height: 24, width: 100 },
-            title:  "+" 
+            title:  "+", 
+            target: "Crimen.atomsController", //Connects to atomsController (needs to be changed to molecules)
+            action: "addAtom" //invokes function addAtom defined in atomsController
             })
           })
       }),
