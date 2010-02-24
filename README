@@ -25,9 +25,9 @@ TODO:
 * Übersicht über die benötigten Grafiken
 * Ablage der jeweiligen Medien (Texte im HTML-Format, Videos) (in welchen Ordner ist kommt das sinnvoller Weise?)
 * Jeder richtet sich seinen eigenen Github-Account ein und arbeitet sich in git ein.
+* Der Code muss weiter dokumentiert werden
 
 * main_page.js
 ** Der splitdivider sollte beim verkleinern nicht über die Mindestgröße hinaus gehen
 ** Der Button in der Seitenleiste unten ist hässlich
-** Die Listenansicht links sollte Moleküle anzeigen. Dazu muss ein neuer Controller erstellt werden.
-** Die Moleküle sollten mit den Atomen verbunden werden und die Atome bei Auswahl eines Moleküls, rechts angezeigt werden.
+** Die Atome sollten bei Auswahl eines Moleküls, rechts angezeigt werden.
