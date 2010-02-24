@@ -105,7 +105,7 @@ Crimen.mainPage = SC.Page.design({
           
           crimenMaincontentHeading: SC.LabelView.design({
           
-          layout: { left:0, right:0, top:0, bottom:0, height:14 },   
+          layout: { left:10, right:0, top:0, bottom:0, height:14 },   
           backgroundColor: 'black',
           controlSize: SC.SMALL_CONTROL_SIZE,
           value:   "_Atoms".loc()
@@ -116,7 +116,7 @@ Crimen.mainPage = SC.Page.design({
           hasHorizontalScroller: NO, // disable horizontal scrolling
             contentView: SC.GridView.design({   
   			
-  			layout: { left:10, right:10, top:14, bottom:10 },
+  			layout: { left:0, right:10, top:14, bottom:10 },
   			contentBinding: 'Crimen.atomsController.arrangedObjects', //connects to atomsController
   			selectionBinding: 'Crimen.atomsController.selection', //selection is controlled by atomsController
   			contentValueKey: "name",//Here, the name ist displayed

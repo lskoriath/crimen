@@ -26,6 +26,7 @@ TODO:
 * Ablage der jeweiligen Medien (Texte im HTML-Format, Videos) (in welchen Ordner ist kommt das sinnvoller Weise?)
 * Jeder richtet sich seinen eigenen Github-Account ein und arbeitet sich in git ein.
 * Der Code muss weiter dokumentiert werden
+* Bugs werden über den Issue-Tracker bei github bearbeitet.
 
 * main_page.js
 ** Der splitdivider sollte beim verkleinern nicht über die Mindestgröße hinaus gehen
