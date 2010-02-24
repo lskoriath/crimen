@@ -71,7 +71,9 @@ Crimen.mainPage = SC.Page.design({
           
           layout: { left:0, right:0, top:14 },
           hasHorizontalScroller: NO, // disable horizontal scrolling
-          contentView: SC.ListView.design({   
+          contentView: SC.SourceListView.design({   
+  			
+  			classNames: ['crimenSidebarList'],
   			
   			contentBinding: 'Crimen.moleculesController.arrangedObjects', //connects to atomsController (needs to be changed to molecules)
   			selectionBinding: 'Crimen.moleculesController.selection', //selection is controlled by atomsController
@@ -79,7 +81,8 @@ Crimen.mainPage = SC.Page.design({
   			canEditContent: YES,
   			
   			backgroundColor: '#d9dee9',
-  			rowHeight: 42
+  			rowHeight: 42,
+  			action: "showMoleculeContent" //adapts the content of the MainGrid. Is defined in moleculesController.
 			})
           }),
           
@@ -105,10 +108,10 @@ Crimen.mainPage = SC.Page.design({
           
           crimenMaincontentHeading: SC.LabelView.design({
           
-          layout: { left:10, right:0, top:0, bottom:0, height:14 },   
+          layout: { left:00, right:0, top:0, bottom:0, height:14 },   
           backgroundColor: 'black',
           controlSize: SC.SMALL_CONTROL_SIZE,
-          value:   "_Atoms".loc()
+          value: "_Atoms".loc()
           }),
           
           crimenMaincontentGrid: SC.ScrollView.design({
@@ -116,7 +119,9 @@ Crimen.mainPage = SC.Page.design({
           hasHorizontalScroller: NO, // disable horizontal scrolling
             contentView: SC.GridView.design({   
   			
-  			layout: { left:0, right:10, top:14, bottom:10 },
+  			classNames: ['crimenMaincontentGrid'],
+  			
+  			layout: { left:0, right:0, top:14, bottom:10 },
   			contentBinding: 'Crimen.atomsController.arrangedObjects', //connects to atomsController
   			selectionBinding: 'Crimen.atomsController.selection', //selection is controlled by atomsController
   			contentValueKey: "name",//Here, the name ist displayed

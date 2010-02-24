@@ -32,7 +32,7 @@ Crimen.moleculesController = SC.ArrayController.create(
     var molecule;
  
     // create a new molecule in the store
-    molecules = Crimen.store.createRecord(Crimen.Molecule, {
+    molecule = Crimen.store.createRecord(Crimen.Molecule, {
       "name": "New Molecule", 
       "description": "This describes the molecule"
     });
@@ -49,6 +49,15 @@ Crimen.moleculesController = SC.ArrayController.create(
     });
  
     return YES;
-  }
-
+  },
+  
+  showMoleculeContent: function() {
+    
+    //Here we should fetch the current selection,
+    //create a query on the loaded data of molecules regarding the resprective atoms, and
+    //set the content of the main GridView to the result of the query.
+    
+    return YES;
+    
+	}
 }) ;
