@@ -1,24 +1,23 @@
 // ==========================================================================
-// Project:   Crimen.Atom
+// Project:   Crimen.Molecule
 // Copyright: ©2010 My Company, Inc.
 // ==========================================================================
 /*globals Crimen */
 
 /** @class
 
-  Atom has three properties: name, type and description. It should be extended with some kind of content container.
+  (Document your Model here)
 
   @extends SC.Record
   @version 0.1
 */
-Crimen.Atom = SC.Record.extend(
-/** @scope Crimen.Atom.prototype */ {
+Crimen.Molecule = SC.Record.extend(
+/** @scope Crimen.Molecule.prototype */ {
 
   name: SC.Record.attr(String),
-  type: SC.Record.attr(String),
   description: SC.Record.attr(String),
-  molecule: SC.Record.toMany("Crimen.Molecule", { 
-    inverse: "atom", isMaster: NO 
+  atom: SC.Record.toMany("Crimen.Atom", { 
+    inverse: "molecule", isMaster: YES 
     })
 
 }) ;

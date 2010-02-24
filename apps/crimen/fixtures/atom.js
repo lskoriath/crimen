@@ -13,26 +13,31 @@ Crimen.Atom.FIXTURES = [
    { guid: 1,
      name: "Kauslität",
      type: "html",
-     description: "Eine kurze Beschreibung der Kauslität" },
+     description: "Eine kurze Beschreibung der Kauslität",
+     molecule: ['1','2','3'] },
   
   { guid: 2,
      name: "Objektive Zurechnung",
      type: "html",
-     description: "Was bedeutet objektive Zurechnung" },
+     description: "Was bedeutet objektive Zurechnung",
+     molecule: ['1','2','3'] },
      
   { guid: 3,
      name: "Vorsatz",
      type: "html",
-     description: "Wer bin ich und was will ich " },
+     description: "Wer bin ich und was will ich?",
+     molecule: ['1','2'] },
      
   { guid: 4,
      name: "Notwehr",
      type: "html",
-     description: "Mach Dich vom Acker, oder ich schlage Dir den Schädel ein." },
+     description: "Mach Dich vom Acker, oder ich schlage Dir den Schädel ein.",
+     molecule: ['1','2'] },
   
   { guid: 5,
      name: "Notstand",
      type: "html",
-     description: "I take a whiskey drink, I take a vodka drink…" }
+     description: "I take a whiskey drink, I take a vodka drink…",
+     molecule: ['1'] }
 
 ];

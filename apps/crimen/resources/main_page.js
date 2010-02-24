@@ -57,18 +57,28 @@ Crimen.mainPage = SC.Page.design({
       topLeftView: SC.View.design({
       
         layout: { minWidth: 100 },
-        childViews: 'crimenSidebarList crimenSidebarButtons'.w(), //Has the list of entries and the buttons at the bottom
-      
+        childViews: 'crimenSidebarHeading crimenSidebarList crimenSidebarButtons'.w(), //Has the list of entries and the buttons at the bottom
+          
+          crimenSidebarHeading: SC.LabelView.design({
+          
+          layout: { left:0, right:0, top:0, bottom:0, height:14 },
+          controlSize: SC.SMALL_CONTROL_SIZE,
+          backgroundColor: 'black',
+          value:   "_Molecules".loc()
+          }),
+          
           crimenSidebarList: SC.ScrollView.design({
-        
+          
+          layout: { left:0, right:0, top:14 },
           hasHorizontalScroller: NO, // disable horizontal scrolling
-          backgroundColor: '#d9dee9',
           contentView: SC.ListView.design({   
   			
-  			contentBinding: 'Crimen.atomsController.arrangedObjects', //connects to atomsController (needs to be changed to molecules)
-  			selectionBinding: 'Crimen.atomsController.selection', //selection is controlled by atomsController
+  			contentBinding: 'Crimen.moleculesController.arrangedObjects', //connects to atomsController (needs to be changed to molecules)
+  			selectionBinding: 'Crimen.moleculesController.selection', //selection is controlled by atomsController
   			contentValueKey: "name",//Here, the name ist displayed
+  			canEditContent: YES,
   			
+  			backgroundColor: '#d9dee9',
   			rowHeight: 42
 			})
           }),
@@ -83,26 +93,39 @@ Crimen.mainPage = SC.Page.design({
       	    theme: 'capsule', //What an ugly button. Can anyone figure out how to make this pretty?
       	    layout: { centerX: 0, centerY: 0, height: 24, width: 100 },
             title:  "+", 
-            target: "Crimen.atomsController", //Connects to atomsController (needs to be changed to molecules)
-            action: "addAtom" //invokes function addAtom defined in atomsController
+            target: "Crimen.moleculesController", //Connects to moleculesController
+            action: "addMolecule" //invokes function addMolecule defined in moleculesController
             })
           })
       }),
       
       bottomRightView: SC.View.design({
       
-        childViews: 'crimenMaincontentWelcome'.w(), //The welcome message at start. Detail views will be generated in seperate view file
-          crimenMaincontentWelcome: SC.ScrollView.design({
+        childViews: 'crimenMaincontentHeading crimenMaincontentGrid'.w(), //The welcome message at start. Detail views will be generated in seperate view file
+          
+          crimenMaincontentHeading: SC.LabelView.design({
+          
+          layout: { left:0, right:0, top:0, bottom:0, height:14 },   
+          backgroundColor: 'black',
+          controlSize: SC.SMALL_CONTROL_SIZE,
+          value:   "_Atoms".loc()
+          }),
+          
+          crimenMaincontentGrid: SC.ScrollView.design({
           
           hasHorizontalScroller: NO, // disable horizontal scrolling
-            contentView: SC.LabelView.design({
-          
-            layout: { centerX: 0, centerY: 0, width: 100, height: 18 },
-            tagName: "h1",
-            classNames: "welcomemessage",
-            value: "rechts" //This text can't be seen, as the text color is white and the background is white, too.
-            })
+            contentView: SC.GridView.design({   
+  			
+  			layout: { left:10, right:10, top:14, bottom:10 },
+  			contentBinding: 'Crimen.atomsController.arrangedObjects', //connects to atomsController
+  			selectionBinding: 'Crimen.atomsController.selection', //selection is controlled by atomsController
+  			contentValueKey: "name",//Here, the name ist displayed
+  			
+  			rowHeight: 128,
+  			columnWidth: 128,
+			})
           })
+          
       })
       
       

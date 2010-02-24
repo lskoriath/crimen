@@ -37,6 +37,9 @@ Crimen.main = function main() {
   //Invokes our controller and defines variable atoms
   var atoms = Crimen.store.find(Crimen.Atom);
   Crimen.atomsController.set('content', atoms);
+  
+  var molecules = Crimen.store.find(Crimen.Molecule);
+  Crimen.moleculesController.set('content', molecules);
 
 } ;
 
