@@ -6,3 +6,9 @@ color: black;
 
 .sc-grid-view .sc-collection-item {
 }
+
+.crimenSidebarHeading {
+background-color: grey;
+border: 0;
+text-align: center;
+}

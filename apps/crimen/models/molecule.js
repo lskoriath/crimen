@@ -33,6 +33,9 @@ Crimen.Molecule = SC.Record.extend(
   description: SC.Record.attr(String),
   atom: SC.Record.toMany("Crimen.Atom", { 
     inverse: "molecule", isMaster: YES 
-    })
-
+    }),
+  atomsCount: function() {
+    return this.get('atom').get('length');
+    }.property('atom').cacheable(),
+  icon: 'http://koriath.jura.uni-saarland.de/bereitgestellt/molecule.png',
 }) ;

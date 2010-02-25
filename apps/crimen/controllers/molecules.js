@@ -60,4 +60,5 @@ Crimen.moleculesController = SC.ArrayController.create(
     return YES;
     
 	}
+	
 }) ;

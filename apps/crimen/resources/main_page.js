@@ -52,19 +52,19 @@ Crimen.mainPage = SC.Page.design({
     crimenMaincontent: SC.SplitView.design({
       layout: { top: 36, bottom: 0, left: 0, right: 0 },
       backgroundColor: 'white',
-      defaultThickness: 200,
+      defaultThickness: 250,
  
       topLeftView: SC.View.design({
       
-        layout: { minWidth: 100 },
+        layout: { minWidth: 150 },
         childViews: 'crimenSidebarHeading crimenSidebarList crimenSidebarButtons'.w(), //Has the list of entries and the buttons at the bottom
           
           crimenSidebarHeading: SC.LabelView.design({
           
           layout: { left:0, right:0, top:0, bottom:0, height:14 },
           controlSize: SC.SMALL_CONTROL_SIZE,
-          backgroundColor: 'black',
-          value:   "_Molecules".loc()
+          classNames: "crimenSidebarHeading",
+          value: "_Molecules".loc()
           }),
           
           crimenSidebarList: SC.ScrollView.design({
@@ -77,12 +77,20 @@ Crimen.mainPage = SC.Page.design({
   			
   			contentBinding: 'Crimen.moleculesController.arrangedObjects', //connects to atomsController (needs to be changed to molecules)
   			selectionBinding: 'Crimen.moleculesController.selection', //selection is controlled by atomsController
-  			contentValueKey: "name",//Here, the name ist displayed
+  			contentValueKey: "name", //Here, the name ist displayed
   			canEditContent: YES,
   			
   			backgroundColor: '#d9dee9',
-  			rowHeight: 42,
-  			action: "showMoleculeContent" //adapts the content of the MainGrid. Is defined in moleculesController.
+  			rowHeight: 30,
+  			action: "showMoleculeContent", //adapts the content of the MainGrid. Is defined in moleculesController.
+  			
+  			exampleView: SC.ListItemView.design({ 
+  			
+  			  hasContentIcon: YES,
+  			  contentValueKey: "name",
+  			  contentIconKey: "icon",
+  			  contentUnreadCountKey: "atomsCount"
+  			  }) 
 			})
           }),
           
@@ -104,15 +112,15 @@ Crimen.mainPage = SC.Page.design({
       
       bottomRightView: SC.View.design({
       
-        childViews: 'crimenMaincontentHeading crimenMaincontentGrid'.w(), //The welcome message at start. Detail views will be generated in seperate view file
+        childViews: 'crimenMaincontentGrid'.w(), //The welcome message at start. Detail views will be generated in seperate view file
           
-          crimenMaincontentHeading: SC.LabelView.design({
-          
-          layout: { left:00, right:0, top:0, bottom:0, height:14 },   
-          backgroundColor: 'black',
-          controlSize: SC.SMALL_CONTROL_SIZE,
-          value: "_Atoms".loc()
-          }),
+          // crimenMaincontentHeading: SC.LabelView.design({
+//        //   
+//        //   layout: { left:00, right:0, top:0, bottom:0, height:14 },   
+//        //   backgroundColor: 'black',
+//        //   controlSize: SC.SMALL_CONTROL_SIZE,
+//        //   value: "_Atoms".loc()
+//        //   }),
           
           crimenMaincontentGrid: SC.ScrollView.design({
           
@@ -121,7 +129,7 @@ Crimen.mainPage = SC.Page.design({
   			
   			classNames: ['crimenMaincontentGrid'],
   			
-  			layout: { left:0, right:0, top:14, bottom:10 },
+  			layout: { left:10, right:10, top:14, bottom:10 },
   			contentBinding: 'Crimen.atomsController.arrangedObjects', //connects to atomsController
   			selectionBinding: 'Crimen.atomsController.selection', //selection is controlled by atomsController
   			contentValueKey: "name",//Here, the name ist displayed
