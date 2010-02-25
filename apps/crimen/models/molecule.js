@@ -37,5 +37,5 @@ Crimen.Molecule = SC.Record.extend(
   atomsCount: function() {
     return this.get('atom').get('length');
     }.property('atom').cacheable(),
-  icon: 'http://koriath.jura.uni-saarland.de/bereitgestellt/molecule.png',
+  icon: "static_url('molecule.png')",
 }) ;

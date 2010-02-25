@@ -57,6 +57,7 @@ Crimen.mainPage = SC.Page.design({
       topLeftView: SC.View.design({
       
         layout: { minWidth: 150 },
+        backgroundColor: '#d9dee9',
         childViews: 'crimenSidebarHeading crimenSidebarList crimenSidebarButtons'.w(), //Has the list of entries and the buttons at the bottom
           
           crimenSidebarHeading: SC.LabelView.design({
@@ -80,7 +81,6 @@ Crimen.mainPage = SC.Page.design({
   			contentValueKey: "name", //Here, the name ist displayed
   			canEditContent: YES,
   			
-  			backgroundColor: '#d9dee9',
   			rowHeight: 30,
   			action: "showMoleculeContent", //adapts the content of the MainGrid. Is defined in moleculesController.
   			
