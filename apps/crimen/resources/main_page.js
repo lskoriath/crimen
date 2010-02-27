@@ -15,11 +15,11 @@
 // =============================================================================
 /*globals Crimen */
 
-// This page describes the main user interface for your application.  
+// This page describes the main user interface for your application.
 Crimen.mainPage = SC.Page.design({
 
     // The main pane is made visible on screen as soon as your app is loaded.
-    // Add childViews to this pane for views to display immediately on page 
+    // Add childViews to this pane for views to display immediately on page
     // load.
     mainPane: SC.MainPane.design({
         classNames: "crimen",
@@ -74,33 +74,21 @@ Crimen.mainPage = SC.Page.design({
             minThickness: 200,
             maxThickness: 350,
             canCollapseViews: YES,
+            dividerThickness: 1,
 
             topLeftView: SC.View.design({
 
                 backgroundColor: '#d9dee9',
                 canCollapse: YES,
                 //Has the list of entries and the buttons at the bottom
-                childViews: 'crimenSidebarHeading crimenSidebarList crimenSidebarButtons'.w(),
-                crimenSidebarHeading: SC.LabelView.design({
-
-                    layout: {
-                        left: 0,
-                        right: 0,
-                        top: 0,
-                        bottom: 0,
-                        height: 14
-                    },
-                    controlSize: SC.SMALL_CONTROL_SIZE,
-                    classNames: "crimenSidebarHeading",
-                    value: "_Molecules".loc()
-                }),
-
+                childViews: 'crimenSidebarList crimenSidebarButtons'.w(),
+                
                 crimenSidebarList: SC.ScrollView.design({
 
                     layout: {
                         left: 0,
                         right: 0,
-                        top: 14
+                        top: 0
                     },
                     // disable horizontal scrolling
                     hasHorizontalScroller: NO,
@@ -160,34 +148,47 @@ Crimen.mainPage = SC.Page.design({
 
             bottomRightView: SC.View.design({
 
-                childViews: 'crimenMaincontentGrid'.w(),
-                crimenMaincontentGrid: SC.ScrollView.design({
+                //Preparation for swapping the Views in bottonrightView, when an atom is clicked
+                //We should put all the views here in a container and let nowShowing control the content.
+                childViews: 'crimenContainer'.w(),
 
-                    // disable horizontal scrolling
-                    hasHorizontalScroller: NO,
-                    contentView: SC.GridView.design({
+                crimenContainer: SC.ContainerView.design({
 
-                        classNames: ['crimenMaincontentGrid'],
-
-                        layout: {
-                            left: 10,
-                            right: 10,
-                            top: 14,
-                            bottom: 10
-                        },
-                        //connects to atomsController
-                        contentBinding: 'Crimen.atomsController.arrangedObjects',
-                        //selection is controlled by atomsController
-                        selectionBinding: 'Crimen.atomsController.selection',
-                        //Here, the name ist displayed
-                        contentValueKey: "name",
-                        rowHeight: 128,
-                        columnWidth: 128
-                    })
+                    layout: {
+                        left: 10,
+                        right: 10,
+                        top: 14,
+                        bottom: 10
+                    },
+					
+					//Calling the currentContainerView function in the app controller.
+                    nowShowingBinding: 'Crimen.appController.currentContainerView'
                 })
 
             })
 
+        })
+    })
+});
+
+Crimen.mainViews = SC.Page.design({
+
+    crimenContainerOverviewGrid: SC.ScrollView.design({
+
+        // disable horizontal scrolling
+        hasHorizontalScroller: NO,
+        contentView: SC.GridView.design({
+
+            classNames: ['crimenContainerOverviewGrid'],
+
+            //connects to atomsController
+            contentBinding: 'Crimen.atomsController.arrangedObjects',
+            //selection is controlled by atomsController
+            selectionBinding: 'Crimen.atomsController.selection',
+            //Here, the name ist displayed
+            contentValueKey: "name",
+            rowHeight: 128,
+            columnWidth: 128
         })
     })
 });
