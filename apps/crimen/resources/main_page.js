@@ -51,6 +51,7 @@ Crimen.mainPage = SC.Page.design({
                 value: "_Welcome to Crimen".loc()
             }),
 
+			//The logout button in the main toolbar.
             crimenToolbarLogoutButton: SC.ButtonView.design({
                 layout: {
                     centerY: 0,
@@ -82,7 +83,7 @@ Crimen.mainPage = SC.Page.design({
                 canCollapse: YES,
                 //Has the list of entries and the buttons at the bottom
                 childViews: 'crimenSidebarList crimenSidebarButtons'.w(),
-                
+
                 crimenSidebarList: SC.ScrollView.design({
 
                     layout: {
@@ -155,13 +156,13 @@ Crimen.mainPage = SC.Page.design({
                 crimenContainer: SC.ContainerView.design({
 
                     layout: {
-                        left: 10,
-                        right: 10,
-                        top: 14,
-                        bottom: 10
+                        left: 0,
+                        right: 0,
+                        top: 0,
+                        bottom: 0
                     },
-					
-					//Calling the currentContainerView function in the app controller.
+
+                    //Calling the currentContainerView function in the app controller.
                     nowShowingBinding: 'Crimen.appController.currentContainerView'
                 })
 
@@ -172,6 +173,10 @@ Crimen.mainPage = SC.Page.design({
 });
 
 Crimen.mainViews = SC.Page.design({
+
+// ..........................................................
+// This is the grid overview, in wich all atoms of a molecule
+// are shown.
 
     crimenContainerOverviewGrid: SC.ScrollView.design({
 
@@ -189,6 +194,50 @@ Crimen.mainViews = SC.Page.design({
             contentValueKey: "name",
             rowHeight: 128,
             columnWidth: 128
+        })
+    }),
+
+// ..........................................................
+// This is the beginning of a single atom view. It has to be greatly
+// extended in the future.
+
+    crimenContainerSingle: SC.View.design({
+        backgroundColor: '#d9dee9',
+        childViews: 'crimenContainerSingleToolbar'.w(),
+        layout: {
+            left: 0,
+            right: 0
+        },
+
+		//The single view should have a toolbar, from which you can get
+		//back to the overview. It should be rethemed.
+		
+        crimenContainerSingleToolbar: SC.ToolbarView.design({
+
+            //Toolbar height set to 24px
+            layout: {
+                top: 0,
+                left: 0,
+                right: 0,
+                height: 24
+            },
+            //has a heading and a button
+            childViews: 'crimenContainerSingleToolbarBackButton'.w(),
+            //sits on top
+            anchorLocation: SC.ANCHOR_TOP,
+
+
+			//That's the back button on the toolbar. It needs to be loclaized.
+            crimenContainerSingleToolbarBackButton: SC.ButtonView.design({
+                layout: {
+                    centerY: 0,
+                    height: 18,
+                    left: 12,
+                    width: 100
+                },
+                title: "_Back".loc()
+            })
+
         })
     })
 });
