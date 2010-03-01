@@ -59,7 +59,9 @@ Crimen.mainPage = SC.Page.design({
                     right: 12,
                     width: 100
                 },
-                title: "_Logout".loc()
+                title: "_Logout".loc(),
+				target: "Crimen.appController",
+                action: "currentContainerView(1)"
             })
         }),
 
