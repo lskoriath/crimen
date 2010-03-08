@@ -48,19 +48,31 @@ Crimen.moleculesController = SC.ArrayController.create(
         return YES;
     },
 
+//binds the welcome-message to the var headingContent, used in the function below. 
+//You find the Header in crimenToolbarHeading.
 headingContent: "_Welcome to Crimen".loc(),
 
     showMoleculeContent: function() {
+	
+			///some tryout to convert the given array-id into single values
+			///var selectedMolecule = array.objectAt('selectedMoleculeArray');
+			
+			////a more complicated way to solve this
+			////var guidOfSelectedMolecule = selectedMolecule.getPath('firstObject.guid');
+			////var moleculeRecord = Crimen.store.find(Crimen.Molecule, guidOfSelectedMolecule);
+			/////Crimen.atomsController.set('content', selectedMolecule);
+			
+        	/////Here we should fetch the current selection,
+        	/////create a query on the loaded data of molecules regarding the resprective atoms, and
+        	/////set the content of the main GridView to the result of the query.
+
+			//select the name out of the molecules
 			var selectedMolecule = this.getPath('selection.firstObject.name');
-//			var selectedMolecule = array.objectAt('selectedMoleculeArray');
-//			var guidOfSelectedMolecule = selectedMolecule.getPath('firstObject.guid');
-//			var moleculeRecord = Crimen.store.find(Crimen.Molecule, guidOfSelectedMolecule);
+			
+			//sets the header to the name of the molecule
 			this.set('headingContent', selectedMolecule);
 
-//			Crimen.atomsController.set('content', selectedMolecule);
-        //Here we should fetch the current selection,
-        //create a query on the loaded data of molecules regarding the resprective atoms, and
-        //set the content of the main GridView to the result of the query.
+
         
 
     }

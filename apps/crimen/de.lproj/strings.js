@@ -19,6 +19,8 @@
 // how your UI will look and you'll notice right away when something needs a
 // localized string added to this file!
 //
+
+//Strings for the german version of Crimen
 SC.stringsFor('de', {
     "_Logout": "Abmelden",
     "_Welcome to Crimen": "Willkommen bei Crimen",

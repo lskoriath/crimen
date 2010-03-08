@@ -36,10 +36,10 @@ Crimen.main = function main() {
 	var atoms = Crimen.store.find(Crimen.Atom);
 	var localAtomsQuery = moleculeRecord.get('atom');
 	Crimen.atomsController.set('content', atoms);
-// Also possible:
-//	var query = SC.Query.local(Crimen.Atom, 'name = "Kauslität"');
-//	var atoms = Crimen.store.find(query);
-//    Crimen.atomsController.set('content', atoms);
+//Also possible:
+//var query = SC.Query.local(Crimen.Atom, 'name = "Kauslität"');
+//var atoms = Crimen.store.find(query);
+//Crimen.atomsController.set('content', atoms);
 
     var molecules = Crimen.store.find(Crimen.Molecule);
     Crimen.moleculesController.set('content', molecules);

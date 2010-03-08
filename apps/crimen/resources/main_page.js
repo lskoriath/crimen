@@ -39,6 +39,7 @@ Crimen.mainPage = SC.Page.design({
             childViews: 'crimenToolbarHeading crimenToolbarLogoutButton'.w(),
             //sits on top
             anchorLocation: SC.ANCHOR_TOP,
+			//is a lableView
             crimenToolbarHeading: SC.LabelView.design({
                 layout: {
                     centerX: 0,
@@ -48,6 +49,7 @@ Crimen.mainPage = SC.Page.design({
                 },
                 controlSize: SC.LARGE_CONTROL_SIZE,
                 fontWeight: SC.BOLD_WEIGHT,
+				//Welcome Message is bound to selected Molecule (for now)
                 valueBinding: 'Crimen.moleculesController.headingContent'
             }),
 
@@ -64,7 +66,7 @@ Crimen.mainPage = SC.Page.design({
                 action: "currentContainerView()"
             })
         }),
-
+		//Maincontent is split in 2 views. Here is defined where it splits.
         crimenMaincontent: SC.SplitView.design({
             layout: {
                 top: 36,
@@ -79,6 +81,7 @@ Crimen.mainPage = SC.Page.design({
             canCollapseViews: YES,
             dividerThickness: 1,
 
+			//the sidebar
             topLeftView: SC.View.design({
 
                 backgroundColor: '#d9dee9',
@@ -86,6 +89,7 @@ Crimen.mainPage = SC.Page.design({
                 //Has the list of entries and the buttons at the bottom
                 childViews: 'crimenSidebarList crimenSidebarButtons'.w(),
 
+				//the Sidebar is a Scrollview
                 crimenSidebarList: SC.ScrollView.design({
 
                     layout: {
@@ -103,25 +107,30 @@ Crimen.mainPage = SC.Page.design({
                         contentBinding: 'Crimen.moleculesController.arrangedObjects',
                         //selection is controlled by atomsController
                         selectionBinding: 'Crimen.moleculesController.selection',
-                        //Here, the name ist displayed
+                        //Here, the name is displayed
                         contentValueKey: "name",
                         canEditContent: YES,
 
                         rowHeight: 30,
                         //adapts the content of the MainGrid. Is defined in moleculesController.
 						actOnSelect: YES,
+						//targets the controller
 						target: "Crimen.moleculesController",
+						//defines the function in the controller, that will be activated
                         action: "showMoleculeContent",
                         exampleView: SC.ListItemView.design({
-
+							
+							//allows to have the "Molecule-Icon" in front of every molecule
                             hasContentIcon: YES,
                             contentValueKey: "name",
                             contentIconKey: "icon",
+							//here its the count of atoms in each molecule
                             contentUnreadCountKey: "atomsCount"
                         })
                     })
                 }),
 
+				//the "add-button"
                 crimenSidebarButtons: SC.ToolbarView.design({
 
                     layout: {
@@ -130,6 +139,7 @@ Crimen.mainPage = SC.Page.design({
                         right: 0,
                         height: 24
                     },
+					//at the bottom of the sidebar
                     anchorLocation: SC.ANCHOR_BOTTOM,
                     childViews: 'crimenSidebarButtonsAdd'.w(),
 
@@ -151,13 +161,14 @@ Crimen.mainPage = SC.Page.design({
                     })
                 })
             }),
-
+			//here bottomRightView is the mainContentView (its always the view on the other side of the devider)
             bottomRightView: SC.View.design({
 
                 //Preparation for swapping the Views in bottonrightView, when an atom is clicked
                 //We should put all the views here in a container and let nowShowing control the content.
                 childViews: 'crimenContainer'.w(),
 
+				//it's a ContainerView
                 crimenContainer: SC.ContainerView.design({
 
                     layout: {

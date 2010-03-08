@@ -26,12 +26,14 @@ Crimen.Molecule = SC.Record.extend(
 /** @scope Crimen.Molecule.prototype */
 {
 
+	//A molecule contains a name, a description and the atoms its related to
     name: SC.Record.attr(String),
     description: SC.Record.attr(String),
     atom: SC.Record.toMany("Crimen.Atom", {
         inverse: "molecule",
         isMaster: YES
     }),
+	//function for the atom-count icons in the sidebar. Counts the numbers of atoms in a molecule.
     atomsCount: function() {
         return this.get('atom').get('length');
     }.property('atom').cacheable(),

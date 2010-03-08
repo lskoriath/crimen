@@ -25,7 +25,8 @@
 Crimen.Atom = SC.Record.extend(
 /** @scope Crimen.Atom.prototype */
 {
-
+	
+	//defines the propertys of an atom. An atom can contain a name, a type, a descripton and the atoms it's related to.
     name: SC.Record.attr(String),
     type: SC.Record.attr(String),
     description: SC.Record.attr(String),
