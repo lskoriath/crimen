@@ -48,12 +48,20 @@ Crimen.moleculesController = SC.ArrayController.create(
         return YES;
     },
 
-    showMoleculeContent: function() {
+headingContent: "_Welcome to Crimen".loc(),
 
+    showMoleculeContent: function() {
+			var selectedMolecule = this.getPath('selection.firstObject.name');
+//			var selectedMolecule = array.objectAt('selectedMoleculeArray');
+//			var guidOfSelectedMolecule = selectedMolecule.getPath('firstObject.guid');
+//			var moleculeRecord = Crimen.store.find(Crimen.Molecule, guidOfSelectedMolecule);
+			this.set('headingContent', selectedMolecule);
+
+//			Crimen.atomsController.set('content', selectedMolecule);
         //Here we should fetch the current selection,
         //create a query on the loaded data of molecules regarding the resprective atoms, and
         //set the content of the main GridView to the result of the query.
-        return YES;
+        
 
     }
 

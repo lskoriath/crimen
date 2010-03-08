@@ -44,11 +44,11 @@ Crimen.mainPage = SC.Page.design({
                     centerX: 0,
                     centerY: 0,
                     height: 24,
-                    width: 300
+                    width: 600
                 },
                 controlSize: SC.LARGE_CONTROL_SIZE,
                 fontWeight: SC.BOLD_WEIGHT,
-                value: "_Welcome to Crimen".loc()
+                valueBinding: 'Crimen.moleculesController.headingContent'
             }),
 
 			//The logout button in the main toolbar.
@@ -61,7 +61,7 @@ Crimen.mainPage = SC.Page.design({
                 },
                 title: "_Logout".loc(),
 				target: "Crimen.appController",
-                action: "currentContainerView(1)"
+                action: "currentContainerView()"
             })
         }),
 
@@ -109,6 +109,8 @@ Crimen.mainPage = SC.Page.design({
 
                         rowHeight: 30,
                         //adapts the content of the MainGrid. Is defined in moleculesController.
+						actOnSelect: YES,
+						target: "Crimen.moleculesController",
                         action: "showMoleculeContent",
                         exampleView: SC.ListItemView.design({
 
@@ -130,6 +132,7 @@ Crimen.mainPage = SC.Page.design({
                     },
                     anchorLocation: SC.ANCHOR_BOTTOM,
                     childViews: 'crimenSidebarButtonsAdd'.w(),
+
                     crimenSidebarButtonsAdd: SC.ButtonView.design({
 
                         //What an ugly button. Can anyone figure out how to make this pretty?
@@ -192,7 +195,7 @@ Crimen.mainViews = SC.Page.design({
             contentBinding: 'Crimen.atomsController.arrangedObjects',
             //selection is controlled by atomsController
             selectionBinding: 'Crimen.atomsController.selection',
-            //Here, the name ist displayed
+            //Here, the name is displayed
             contentValueKey: "name",
             rowHeight: 128,
             columnWidth: 128

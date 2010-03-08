@@ -17,12 +17,7 @@ Crimen.appController = SC.ObjectController.create(
   // This function sets the content of the container on the right side of the split view. 
   // It has to be completely rewritten, as we want to switch between single atoms and overviews.
 
-  	currentContainerView: function (container_content) {
-	  if (container_content === 1) {
-	  	return Crimen.getPath('mainViews.crimenContainerSingle');
-  	  }
-      else {
+  	currentContainerView: function () {
 	    return Crimen.getPath('mainViews.crimenContainerOverviewGrid');
-	  }
     }.property()
   });

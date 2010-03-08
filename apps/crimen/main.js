@@ -31,8 +31,15 @@ Crimen.main = function main() {
     Crimen.getPath('mainPage.mainPane').append();
 
     //Invokes our controller and defines variable atoms
-    var atoms = Crimen.store.find(Crimen.Atom);
-    Crimen.atomsController.set('content', atoms);
+
+	var moleculeRecord = Crimen.store.find(Crimen.Molecule);
+	var atoms = Crimen.store.find(Crimen.Atom);
+	var localAtomsQuery = moleculeRecord.get('atom');
+	Crimen.atomsController.set('content', atoms);
+// Also possible:
+//	var query = SC.Query.local(Crimen.Atom, 'name = "Kauslität"');
+//	var atoms = Crimen.store.find(query);
+//    Crimen.atomsController.set('content', atoms);
 
     var molecules = Crimen.store.find(Crimen.Molecule);
     Crimen.moleculesController.set('content', molecules);
